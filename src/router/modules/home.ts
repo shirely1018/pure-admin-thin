@@ -1,3 +1,4 @@
+const { VITE_HIDE_HOME } = import.meta.env;
 const Layout = () => import("@/layout/index.vue");
 
 export default {
@@ -6,7 +7,7 @@ export default {
   component: Layout,
   redirect: "/welcome",
   meta: {
-    icon: "homeFilled",
+    icon: "ep:home-filled",
     title: "首页",
     rank: 0
   },
@@ -16,8 +17,9 @@ export default {
       name: "Welcome",
       component: () => import("@/views/welcome/index.vue"),
       meta: {
-        title: "首页"
+        title: "首页",
+        showLink: VITE_HIDE_HOME === "true" ? false : true
       }
     }
   ]
-} as RouteConfigsTable;
+} satisfies RouteConfigsTable;
